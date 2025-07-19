@@ -11,7 +11,7 @@ public class DartsDbContext : DbContext
     public DartsDbContext(DbContextOptions<DartsDbContext> options) 
         : base(options)
     {
-        Database.Migrate();
+        Database.EnsureCreated();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

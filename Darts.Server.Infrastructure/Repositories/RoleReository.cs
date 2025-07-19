@@ -33,7 +33,8 @@ public class RoleReository : IRoleRepository
 
     public Role GetRoleById(Guid id)
     {
-        return _dartsDbContext.Roles.FirstOrDefault(r => r.Id == id);
+        return _dartsDbContext.Roles
+            .FirstOrDefault(r => r.Id == id);
     }
 
     public void UpdateRole(Role role)

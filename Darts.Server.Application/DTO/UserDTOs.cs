@@ -23,7 +23,7 @@ public class AddRolesToUserDTO
     public List<Guid> RolesIds { get; set; }
 }
 
-public class RemoveRolesFromUser
+public class RemoveRolesFromUserDTO
 {
     public Guid UserId { get; set; }
     public List<Guid> RolesIds { get; set; }
