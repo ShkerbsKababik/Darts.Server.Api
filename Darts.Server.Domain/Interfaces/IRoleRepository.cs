@@ -4,8 +4,11 @@ namespace Darts.Server.Domain.Interfaces;
 
 public interface IRoleRepository
 {
-    public User GetRoleById(Guid id);
-    public void CreateRole(User user);
-    public void UpdateRole(User user);
-    public void DeleteRole(User user);
+    public Role GetRoleById(Guid id);
+    public List<Role> GetAllRoles(); 
+
+
+    public void CreateRole(Role role);
+    public void UpdateRole(Role role);
+    public void DeleteRole(Role role);
 }
