@@ -1,5 +1,5 @@
 ﻿using Darts.Server.Application.DTO;
-using Darts.Server.Domain.Enatities;
+using Darts.Server.Domain.Enatities.UserAgregate;
 using Darts.Server.Domain.Interfaces;
 
 namespace Darts.Server.Application.Services;

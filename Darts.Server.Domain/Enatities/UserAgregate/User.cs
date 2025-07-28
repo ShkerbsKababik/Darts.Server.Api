@@ -1,4 +1,4 @@
-﻿namespace Darts.Server.Domain.Enatities;
+﻿namespace Darts.Server.Domain.Enatities.UserAgregate;
 
 public class User : BaseEntity
 {

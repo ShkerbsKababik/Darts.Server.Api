@@ -1,4 +1,4 @@
-﻿using Darts.Server.Domain.Enatities;
+﻿using Darts.Server.Domain.Enatities.UserAgregate;
 using Darts.Server.Domain.Interfaces;
 using Darts.Server.Infrastructure.Data;
 
@@ -29,6 +29,13 @@ public class UserRepository : IUserRepository
     {
         return _dartsDbContext.Users
             .FirstOrDefault(u => u.Id == id);
+    }
+
+    public List<User> GetUsersByIds(List<Guid> ids)
+    {
+        return _dartsDbContext.Users
+            .Where(u => ids.Contains(u.Id))
+            .ToList();
     }
 
     public List<User> GetAllUsers()
