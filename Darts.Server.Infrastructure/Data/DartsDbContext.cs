@@ -15,8 +15,17 @@ public class DartsDbContext : DbContext
     public DartsDbContext(DbContextOptions<DartsDbContext> options) 
         : base(options)
     {
-        Database.EnsureDeleted();
-        Database.EnsureCreated();
+
+    }
+
+    public static void Initialize(DartsDbContext context)
+    {
+        // Закрываем все соединения с текущей БД
+        context.Database.CloseConnection();
+
+        // Удаляем и создаем заново
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

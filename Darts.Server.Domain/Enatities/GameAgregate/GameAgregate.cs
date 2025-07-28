@@ -10,6 +10,8 @@ public class Game : BaseEntity
     public List<Score> Scores { get; set; }
     public GameStatus Status { get; set; }
 
+    public Game() { }
+
     public Game(User owner, List<User> players)
     {
         Owner = owner;
@@ -48,6 +50,8 @@ public class Score : BaseEntity
 {
     public User Owner { get; set; }
     public int Value { get; set; }
+
+    public Score() { }
 
     public Score(User owner, int value)
     {
