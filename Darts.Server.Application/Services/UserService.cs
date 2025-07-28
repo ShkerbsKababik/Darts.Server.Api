@@ -8,6 +8,8 @@ public interface IUserService
 {
     UserDTO GetUserById(Guid id);
 
+    List<UserDTO> GetAllUsers();
+
     void CreateUser(UserCreationDTO userCreationDTO);
     void ChangeUserPassword(ChangeUserPasswordDTO changeUserPasswordDTO);
     void AddRolesToUser(AddRolesToUserDTO addRolesToUserDTO);
@@ -41,6 +43,16 @@ public class UserService : IUserService
         };
 
         return userDTO;
+    }
+
+    public List<UserDTO> GetAllUsers()
+    {
+        return _userRepository.GetAllUsers()
+            .Select(user => new UserDTO() 
+            { 
+                Login = user.Login 
+            })
+            .ToList();
     }
 
     public void AddRolesToUser(AddRolesToUserDTO addRolesToUserDTO)

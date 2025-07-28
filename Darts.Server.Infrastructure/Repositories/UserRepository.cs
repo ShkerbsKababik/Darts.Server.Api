@@ -31,6 +31,11 @@ public class UserRepository : IUserRepository
             .FirstOrDefault(u => u.Id == id);
     }
 
+    public List<User> GetAllUsers()
+    {
+        return _dartsDbContext.Users.ToList();
+    }
+
     public void UpdateUser(User user)
     {
         _dartsDbContext.Users.Update(user);

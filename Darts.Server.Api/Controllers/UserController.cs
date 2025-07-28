@@ -25,6 +25,12 @@ namespace Darts.Server.Api.Controllers
             return _userService.GetUserById(id);
         }
 
+        [HttpGet("/users")]
+        public List<UserDTO> GetAllUsers()
+        { 
+            return _userService.GetAllUsers();
+        }
+
         [HttpPost("/user/add")]
         public void CreateUser(UserCreationDTO userCreationDTO)
         {
