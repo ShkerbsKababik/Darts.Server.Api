@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Darts.Server.Domain\Darts.Server.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

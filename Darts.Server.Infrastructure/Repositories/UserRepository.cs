@@ -8,6 +8,11 @@ public class UserRepository : IUserRepository
 {
     private readonly DartsDbContext _dartsDbContext;
 
+    public UserRepository(DartsDbContext dartsDbContext)
+    {
+        _dartsDbContext = dartsDbContext;
+    }
+
     public void CreateUser(User user)
     {
         _dartsDbContext.Users.Add(user);
@@ -22,11 +27,8 @@ public class UserRepository : IUserRepository
 
     public User GetUserById(Guid id)
     {
-        var user = _dartsDbContext.Users
-            .Where(u => u.Id == id)
-            .First();
-
-        return user;
+        return _dartsDbContext.Users
+            .FirstOrDefault(u => u.Id == id);
     }
 
     public void UpdateUser(User user)

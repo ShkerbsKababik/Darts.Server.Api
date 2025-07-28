@@ -6,10 +6,12 @@ namespace Darts.Server.Application.Services;
 
 public interface IUserService
 {
+    UserDTO GetUserById(Guid id);
+
     void CreateUser(UserCreationDTO userCreationDTO);
     void ChangeUserPassword(ChangeUserPasswordDTO changeUserPasswordDTO);
     void AddRolesToUser(AddRolesToUserDTO addRolesToUserDTO);
-    void RemoveRolesToUser(RemoveRolesFromUser removeRolesFromUserDTO);
+    void RemoveRolesToUser(RemoveRolesFromUserDTO removeRolesFromUserDTO);
 }
 
 public class UserService : IUserService
@@ -23,6 +25,22 @@ public class UserService : IUserService
     {
         _userRepository = userRepository;
         _roleRepository = roleRepository;
+    }
+
+    public UserDTO GetUserById(Guid id)
+    {
+        var user = _userRepository.GetUserById(id);
+        if (user is null)
+        {
+            // throw exception
+        }
+
+        var userDTO = new UserDTO()
+        {
+            Login = user.Login
+        };
+
+        return userDTO;
     }
 
     public void AddRolesToUser(AddRolesToUserDTO addRolesToUserDTO)
@@ -64,7 +82,7 @@ public class UserService : IUserService
         _userRepository.CreateUser(user);
     }
 
-    public void RemoveRolesToUser(RemoveRolesFromUser removeRolesFromUserDTO)
+    public void RemoveRolesToUser(RemoveRolesFromUserDTO removeRolesFromUserDTO)
     {
         var user = _userRepository.GetUserById(removeRolesFromUserDTO.UserId);
         if (user is null)
