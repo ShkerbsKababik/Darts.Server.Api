@@ -1,6 +1,7 @@
 ﻿using Darts.Server.Domain.Enatities.GameAgregate;
 using Darts.Server.Domain.Interfaces;
 using Darts.Server.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Darts.Server.Infrastructure.Repositories;
 
@@ -22,6 +23,10 @@ public class GameRepository : IGameRepository
     public Game GetGameById(Guid id)
     {
         return _dartsDbContext.Games
+            .Include(g => g.Owner)
+            .Include(g => g.CurrentPlayer)
+            .Include(g => g.Players)
+            .Include(g => g.Scores)
             .FirstOrDefault(g => g.Id == id);
     }
 
