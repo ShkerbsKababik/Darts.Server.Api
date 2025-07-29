@@ -1,4 +1,4 @@
-﻿using Darts.Server.Domain.Enatities;
+﻿using Darts.Server.Domain.Enatities.UserAgregate;
 
 namespace Darts.Server.Domain.Interfaces;
 

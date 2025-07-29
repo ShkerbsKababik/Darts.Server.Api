@@ -1,8 +1,20 @@
-﻿namespace Darts.Server.Application.DTO;
+﻿using Darts.Server.Domain.Enatities.UserAgregate;
+
+namespace Darts.Server.Application.DTO;
 
 public class UserDTO
 { 
+    public Guid Id { get; set; }
     public string Login { get; set; }
+
+    public static UserDTO FromDomain(User user)
+    {
+        return new UserDTO()
+        { 
+            Id = user.Id,
+            Login = user.Login
+        };
+    }
 }
 
 public class UserCreationDTO

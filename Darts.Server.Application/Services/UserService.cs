@@ -1,5 +1,5 @@
 ﻿using Darts.Server.Application.DTO;
-using Darts.Server.Domain.Enatities;
+using Darts.Server.Domain.Enatities.UserAgregate;
 using Darts.Server.Domain.Interfaces;
 
 namespace Darts.Server.Application.Services;
@@ -39,6 +39,7 @@ public class UserService : IUserService
 
         var userDTO = new UserDTO()
         {
+            Id = user.Id,
             Login = user.Login
         };
 
@@ -50,6 +51,7 @@ public class UserService : IUserService
         return _userRepository.GetAllUsers()
             .Select(user => new UserDTO() 
             { 
+                Id = user.Id,
                 Login = user.Login 
             })
             .ToList();
