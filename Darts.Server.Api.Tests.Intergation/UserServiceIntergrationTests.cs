@@ -30,4 +30,26 @@ public class UserServiceIntergrationTests : IClassFixture<DartsServerApiApplicat
         Assert.NotNull(users);
         Assert.Contains(users, u => u.Login == login);
     }
+
+    [Fact]
+    public async Task GetUserTest()
+    {
+        var login = $"user{Guid.NewGuid()}";
+        var password = $"password{Guid.NewGuid()}";
+
+        var userCreationDTO = new UserCreationDTO()
+        {
+            Login = login,
+            Password = password
+        };
+
+        await _httpClient.PostAsJsonAsync("/user/add", userCreationDTO);
+        var users = await _httpClient.GetFromJsonAsync<List<UserDTO>>("/users");
+
+        var userId = users?.First(u => u.Login == login).Id;
+        var user = await _httpClient.GetFromJsonAsync<UserDTO>($"/user/{userId}");
+
+        Assert.NotNull(user);
+        Assert.Equal(login, user.Login);
+    }
 }
