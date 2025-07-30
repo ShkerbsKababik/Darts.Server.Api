@@ -15,7 +15,10 @@ public class DartsDbContext : DbContext
     public DartsDbContext(DbContextOptions<DartsDbContext> options) 
         : base(options)
     {
-        Database.EnsureCreated();
+        if (Database.IsRelational())
+        {
+            Database.Migrate();
+        }
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
