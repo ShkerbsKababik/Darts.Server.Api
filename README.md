@@ -16,7 +16,7 @@ A personal project for testing new technologies and implementing software design
 - [x] EF Core  
 - [x] Migration
 - [x] CORS
-- [ ] xUnit  
+- [x] xUnit  
 - [ ] Authentication
 - [ ] NLog
 - [ ] Https complete
