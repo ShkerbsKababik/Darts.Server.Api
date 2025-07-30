@@ -14,7 +14,7 @@ A personal project for testing new technologies and implementing software design
 ## Progress
 ### Core API
 - [x] EF Core  
-- [ ] Migration
+- [x] Migration
 - [ ] CQRS  
 - [ ] xUnit  
 - [ ] Authentication
@@ -55,9 +55,10 @@ A personal project for testing new technologies and implementing software design
 - [ ] ClickHouse
 
 ## Documentation
-1. Creating Domain Entities  
-2. Authentication Setup (Postman/Insomnia)  
-3. Configuration Guide  
-4. Log Management  
-5. Request Tracing  
-6. Getting Started  
+1. Creating Domain Entities
+2. Creating EFCore Migrations
+3. Authentication Setup (Postman/Insomnia)  
+4. Configuration Guide  
+5. Log Management  
+6. Request Tracing  
+7. Getting Started  
