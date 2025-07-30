@@ -15,7 +15,7 @@ A personal project for testing new technologies and implementing software design
 ### Core API
 - [x] EF Core  
 - [x] Migration
-- [ ] CQRS  
+- [ ] CORS
 - [ ] xUnit  
 - [ ] Authentication
 - [ ] NLog
