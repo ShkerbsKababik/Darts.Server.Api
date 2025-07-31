@@ -16,17 +16,17 @@ public class LoginController : ControllerBase
         _securityService = securityService;
     }
 
-    [HttpPost("/login")]
-    public string Login(LoginDTO loginDTO)
+    [HttpPost("/auth")]
+    public string GetJwtToken(LoginDTO loginDTO)
     {
         return _securityService.GenerateToken(
             login: loginDTO.Login, 
             password: loginDTO.Password);
     }
 
-    [HttpGet("/login/check")]
+    [HttpGet("/auth/check")]
     [Authorize]
-    public IActionResult CheckLogin()
+    public IActionResult CheackAuthorization()
     {
         return Ok("authorized");
     }
