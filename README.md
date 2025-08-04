@@ -17,7 +17,7 @@ A personal project for testing new technologies and implementing software design
 - [x] Migration
 - [x] CORS
 - [x] xUnit  
-- [ ] Authentication
+- [x] Authentication
 - [ ] NLog
 - [ ] Https complete
 
