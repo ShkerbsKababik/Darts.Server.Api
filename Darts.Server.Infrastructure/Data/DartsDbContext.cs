@@ -20,6 +20,7 @@ public class DartsDbContext : DbContext
             Database.Migrate();
         }
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>()

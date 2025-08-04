@@ -53,11 +53,21 @@ public class SecurityService : ISecurityService
 
 public class AuthOptions
 {
-    public const string AuthenticationScheme = JwtBearerDefaults.AuthenticationScheme;
+    public const string ISSUER = "MyAuthServer"; // издатель токена
+    public const string AUDIENCE = "MyAuthClient"; // потребитель токена
+    const string KEY = "MyAuthKey";   // ключ для шифрации // должно быть больше 128 бит в utf-8
+    public static SymmetricSecurityKey GetSymmetricSecurityKey()
+    {
+        var keyBytes = Encoding.UTF8.GetBytes(KEY);
 
-    public const string ISSUER = "DartsServerApi"; // издатель токена
-    public const string AUDIENCE = "DartsServerApi"; // потребитель токена
-    const string KEY = "DartsServerApi";   // ключ для шифрации
-    public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
-        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
+        // Если ключ всё ещё слишком короткий, можно дополнить его до нужного размера
+        if (keyBytes.Length < 32)
+        {
+            var paddedKey = new byte[32];
+            Array.Copy(keyBytes, paddedKey, Math.Min(keyBytes.Length, 32));
+            keyBytes = paddedKey;
+        }
+        
+        return new SymmetricSecurityKey(keyBytes);
+    }
 }
