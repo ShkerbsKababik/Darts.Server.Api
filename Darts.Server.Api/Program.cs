@@ -1,11 +1,13 @@
 using Darts.Server.Application.Services;
 using Darts.Server.Domain.Interfaces;
 using Darts.Server.Infrastructure.Data;
+using Darts.Server.Infrastructure.MIddlewares;
 using Darts.Server.Infrastructure.Repositories;
 using Darts.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,8 +48,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
         });
 
-    // Swagger services
-    builder.Services.AddEndpointsApiExplorer();
+// Swagger services
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Application services
@@ -63,13 +65,15 @@ builder.Services.AddScoped<ISecurityService, SecurityService>();
 
 var app = builder.Build();
 
+// Add logging middleware
+app.UseMiddleware<RequestLoggingMiddleware>();
+
 // Enable CORS middleware
 app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    // app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
