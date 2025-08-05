@@ -61,4 +61,6 @@ A personal project for testing new technologies and implementing software design
 4. Configuration Guide  
 5. Log Management  
 6. Request Tracing  
-7. Getting Started  
+7. Getting Started
+8. Where to find logs
+9. How to setup database
