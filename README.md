@@ -18,7 +18,7 @@ A personal project for testing new technologies and implementing software design
 - [x] CORS
 - [x] xUnit  
 - [x] Authentication
-- [ ] NLog
+- [x] NLog
 - [ ] Https complete
 
 ### Features
