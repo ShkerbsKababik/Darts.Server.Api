@@ -1,4 +1,6 @@
-﻿namespace Darts.Server.Domain.Enatities.UserAgregate;
+﻿using Darts.Server.Domain.Policies;
+
+namespace Darts.Server.Domain.Enatities.UserAgregate;
 
 public class User : BaseEntity
 {
@@ -8,6 +10,11 @@ public class User : BaseEntity
 
     public User(string login, string password)
     {
+        if (!UserPolices.CanUserBeCreated(login, password))
+        { 
+            throw new UserCanNotBeCreatedException();
+        }
+
         Login = login;
         Password = password;
     }
